@@ -1,0 +1,724 @@
+5 rem       by keith d. collison
+10 rem        and shadow knight.
+20 rem   -----we kick butt------
+23 rem*********************************
+25 rem*********************************
+27 rem*!!!!!!!!!!! caution !!!!!!!!!!!*
+28 rem* trying to understand this     *
+30 rem* program will cause            *
+33 rem*  severe sickness and dizziness*
+35 rem!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+37 rem*********************************
+40 rem
+41 rem ******compliments welcomed!******------------------------------------
+43 rem ------critisism tolerated------- ****************************************
+44 rem   call (301) 834-XXXX                          ask for shadow knight or
+45 rem           'keith'
+46 rem *************address-----
+47 rem    XXXXX
+48 rem    jefferson, md
+49 rem         21755
+54 clr
+99 printchr$(147):poke53280,6:poke53281,6:poke646,1:poke650,250
+100 print"***********player generator************"
+110 print:print:print
+115 rem*******number generator*********
+120 a1=int(rnd(0)*6)+13
+130 a2=int(rnd(0)*6)+13
+140 a3=int(rnd(0)*15)+3
+150 a4=int(rnd(0)*15)+3
+160 a5=int(rnd(0)*15)+3
+170 a6=int(rnd(0)*15)+3
+180 gosub 6880
+240 print:print"do you wish to keep these scores?"
+245 get d$:if d$="" then 245:goto 250
+250 if d$="n" then printchr$(147):goto 100
+260 if d$<>"y" then 245
+265 rem****ability placement*************
+266 printchr$(147):gosub 6880:mus=0:mnd=0:wis=0:dex=0:hlt=0:chs=0
+300 print:print:print"<s>trength   <i>ntelligence  <w>isdom "
+310 print:print:print"<d>exterity  <c>onstitution   c<h>arisma"
+330 print:print:print"where would you like the first number to be placed?"
+340 get c1$:if c1$="" then 340
+345 gosub 7000
+350 if c1$="s" then mus=mus+a1:poke1427,y:ifa1>9 then  poke1426,49
+360 if c1$="i" then mnd=mnd+a1:poke1440,y:ifa1>9 then  poke1439,49
+370 if c1$="w" then wis=wis+a1:poke1455,y:ifa1>9 then  poke1454,49
+380 if c1$="d" then dex=dex+a1:poke1548,y:ifa1>9 then  poke1547,49
+390 if c1$="c" then hlt=hlt+a1:poke1565,y:ifa1>9 then  poke1564,49
+400 if c1$="h" then chs=chs+a1:poke1579,y:ifa1>9 then  poke1578,49
+404 ford=1 to 3
+406 printchr$(145)
+408 next d
+409 ford=1 to 3:printchr$(145):next d
+410 print:print"where do you wish to put your second          number?"
+420 get c2$:if c2$="" then 420
+430 if c2$="s" then mus=mus+a2:poke1427,y2:ifa2>9 then  poke1426,49
+440 if c2$="i" then mnd=mnd+a2:poke1440,y2:ifa2>9 then  poke1439,49
+450 if c2$="w" then wis=wis+a2:poke1455,y2:ifa2>9 then  poke1454,49
+460 if c2$="d" then dex=dex+a2:poke1548,y2:ifa2>9 then  poke1547,49
+470 if c2$="c" then hlt=hlt+a2:poke1565,y2:ifa2>9 then  poke1564,49
+480 if c2$="h" then chs=chs+a2:poke1579,y2:ifa2>9 then  poke1578,49
+490 print:print"where do you want your third number?"
+500 get c3$:if c3$="" then 500
+510 if c3$="s" then mus=mus+a3:poke1427,y3:ifa3>9 then  poke1426,49
+520 if c3$="i" then mnd=mnd+a3:poke1440,y3:ifa3>9 then  poke1439,49
+530 if c3$="w" then wis=wis+a3:poke1455,y3:ifa3>9 then  poke1454,49
+540 if c3$="d" then dex=dex+a3:poke1548,y3:ifa3>9 then  poke1547,49
+550 if c3$="c" then hlt=hlt+a3:poke1565,y3:ifa3>9 then  poke1564,49
+560 if c3$="h" then chs=chs+a3:poke1579,y3:ifa3>9 then  poke1578,49
+570 print:print"where do you want to put your fourth      number?"
+580 get c4$:if c4$="" then 580
+590 if c4$="s" then mus=mus+a4:poke1347,y4:ifa4>9 then  poke1346,49
+600 if c4$="i" then mnd=mnd+a4:poke1365,y4:ifa4>9 then  poke1364,49
+610 if c4$="w" then wis=wis+a4:poke1375,y4:ifa4>9 then  poke1374,49
+620 if c4$="d" then dex=dex+a4:poke1468,y4:ifa4>9 then  poke1467,49
+630 if c4$="c" then hlt=hlt+a4:poke1485,y4:ifa4>9 then  poke1484,49
+640 if c4$="h" then chs=chs+a4:poke1499,y4:ifa4>9 then  poke1498,49
+650 print:print"where do you wish to put your fifth         number?"
+660 get c5$:if c5$="" then 660
+670 if c5$="s" then mus=mus+a5:poke1231,y5:ifa5>9 then  poke1230,49
+680 if c5$="i" then mnd=mnd+a5:poke1245,y5:ifa5>9 then  poke1244,49
+690 if c5$="w" then wis=wis+a5:poke1255,y5:ifa5>9 then  poke1254,49
+700 if c5$="d" then dex=dex+a5:poke1348,y5:ifa5>9 then  poke1347,49
+710 if c5$="c" then hlt=hlt+a5:poke1365,y5:ifa5>9 then  poke1364,49
+720 if c5$="h" then chs=chs+a5:poke1379,y5:ifa5>9 then  poke1378,49
+721 print:print"your sixth number?"
+722 get c6$:if c6$="" then 722
+723 if c6$="s" thenmus=a6
+724 if c6$="i"then mnd=a6
+725 if c6$="w" then wis=a6
+726 if c6$="d" then dex=a6
+727 if c6$="c" then hlt=a6
+728 if c6$="h" then chs=a6
+730 if mus=0 then goto 266
+740 if mnd=0 then goto266
+750 if wis=0 then goto266
+760 if dex=0 then goto266
+770 if hlt=0 then goto266
+780 if chs=0 then goto266
+781 if mus=18 then exm=int(rnd(0)*99)+1
+790 printchr$(147):print:print"strength-";mus
+800 print:print"intelligence-";mnd
+805 print:print"wisdom-";wis
+810 print:print"dexterity-";dex
+815 print:print"constitution-";hlt
+820 print:print"charisma-";chs
+830 print:print"are you sure about your scores?"
+840 get d$:if d$="" then 840
+850 if d$="y" then 900
+860 print"do you want to <r>estart"
+870 print"  or <a>rrange them differently?"
+880 get d$:if d$="" then 880
+883 if d$="r" then 5
+885 if d$<>"a" then 880
+886 mus=0:mnd=0:dex=0:wis=0:hlt=0:chs=0:goto266
+900 printchr$(147);"****************race pick***************"
+910 print:print"1. dwarf":race=0
+920 print:print"2. elf"
+930 print:print"3. half-elf"
+935 print:print"4. halfling
+940 print:print"5. gnome"
+950 print:print"6. half-orc"
+960 print:print"7. human"
+970 print:print"please pick your race-"
+971 print"or press '8' to see your ability scores"
+975 get race:if race<1 or race>8 then goto 975
+979 if race=8 then gosub 9790:gosub9999:goto 910
+980 if race=1 then 1000
+982 if race=2 then 1075
+983 if race=3 then 1160
+985 if race=4 then 1240
+987 if race=5 then 1300
+988 if race=6 then 1375
+999 if race=7 then 1429
+1000 print"<m>ale or <f>emale?"
+1005 get gen$:if gen$=""then 1005
+1010 if gen$="f" then  d=17
+1011 if gen$="m" then  d=18
+1015 if mus<8 then print:print"you cannot be this race!":gosub9999:goto  910
+1016 if mus>d then print:print"you cannot be this character!":gosub9999:goto910
+1020 if dex=18 then print:print"you cannot be this race!":gosub9999:goto 910
+1025 if hlt<11 then  print:print"you cannot be this race!":gosub9999:goto910
+1030 ifchs=18then print:print"you cannot be this character!":gosub9999:goto910
+1040 print:print"dwarves gain a +1 on constitution"
+1041 print"   and a -1 on charisma."
+1045 print:print"are you sure you wish to be this race?"
+1050 get d$:if d$="" then 1050
+1051 if d$="n" then gosub 9999:goto910
+1055 if d$<>"y"then goto 1050
+1060 hlt=hlt+1:chs=chs-1:if chs<3 then chs=3
+1061 goto 1460
+1065 goto 1460
+1070 print"<m>ale or <f>emale?"
+1071 get gen$:if gen$="" then 1071
+1072 hlt=hlt+1:chs=chs-1:if chs<3 then chs=3
+1073 goto 1460
+1075 print"<m>ale or <f>emale"
+1080 get gen$:if gen$="" then 1080
+1081 if gen$="m" then d=18
+1083 if gen$="f" then d=16
+1090 if mus>d thenprint:print"you cannot be this race!":gosub9999:goto910
+1095 if mnd<8 then print:print"you cannot be this race!":gosub9999:goto910
+1100 if dex<6 then print:print"you cannot be this race!":gosub9999:goto910
+1105 if hlt<7 then print:print"you cannot be this race!":gosub9999:goto 910
+1110 if chs<8 then print:print"you cannot be this race!":gosub9999:goto 910
+1115 print:print"elves gain a +1 on dexterity"
+1120 print"  and a -1 on constitution."
+1130 print:print"are you sure you wish to become this       race?"
+1140 get d$:if d$="" then 1140
+1145 if d$="n" then gosub9999:goto 910
+1150 dex=dex+1:hlt=hlt-1:if hlt<3 thenhlt=3
+1155 goto 1460
+1160 print"<m>ale or <f>emale?"
+1162 get gen$:if gen$="" then 1162
+1165 if gen$="m" then d=18
+1170 if gen$="f" then d=17
+1175 if mus>d then print:print"you cannot be this race!":gosub9999:goto 910
+1180 if mnd<4 then print:print"you cannot be this race!":gosub9999:goto 910
+1190 if dex<6 then print:print"you cannot be this race!":gosub9999:goto 910
+1200 if hlt<6 then print:print"you cannot be this race!":gosub9999:goto910
+1210 print:print"half-elves gain no bonuses or penalties  on ability scores."
+1220 print"are you sure you wish to be this race?"
+1230 get d$:if d$="" then 1230
+1235 if d$="n" thengosub9999:goto 910
+1236 ecar$="he":race=3:goto1460
+1240 print"<m>ale or <f>emale?"
+1245 get gen$:if gen$="" then 1245
+1250 if gen$="m" then d=18
+1251 if gen$="f" then d=15
+1255 if mus>d or mus<6 then print:print"you cannot become this race":gosub9999:goto910
+1260 if mnd<6 then print:print"you cannot be this race!":gosub9999:goto 910
+1265 if wis>17 thenprint:print"you cannot be this race!":gosub9999:goto910
+1270 if dex<7 then print:print"you cannot be this race!":gosub9999:goto910
+1275 if hlt<10 then print:print"you cannot be this race!":gosub9999:goto910
+1280 print:print"halfings gain a +1 on dexterity"
+1281 print"    and a -1 on strength.
+1284 print:print"are you sure you wish to be this race?"
+1286 get d$:if d$="" then 1286
+1288 if d$="n" then gosub9999:goto 910
+1290 dex=dex+1:mus=mus-1:if hlt<3 thenhlt=3
+1295 goto1460
+1300 print"<m>ale or <f>emale?"
+1305 get gen$:if gen$="" then 1305
+1310 if gen$="f" then d=15
+1320 if gen$="m" then d=18
+1330 if mus<6 or mus>d thenprint:print"you cannot be this race!":gosub9999:goto910
+1340 if mnd<7 then print:print"you cannot be this race!":gosub9999:goto910
+1345 if hlt<8 then print:print"you cannot be this race!":gosub9999:goto 910
+1350 print:print"gnomes gain no bonuses or peanlties on    ability scores."
+1355 print:print"are you sure you wish to be this race?"
+1360 get d$:if d$="" then 1360
+1365 if d$="n" then gosub9999:goto 910
+1370 goto 1460
+1375 print"<m>ale or <f>emale"
+1380 get gen$:if gen$="" then 1380
+1390 if mus<5 then print:print"you cannot be this race!":gosub 9999:goto910
+1395 if mnd>17 then print:print"you cannot be this race!":gosub9999:goto 910
+1400 if wis>14 then print"you cannot be this race!":gosub9999:goto910
+1405 if dex>14 then print"you cannot be this race!":gosub9999:goto910
+1410 if hlt<12 then print"you cannot be this race!":gosub9999:goto 910
+1415 if chs>14 then print:print"you cannot be this race!":gosub9999:goto 910
+1416 print"half-orcs gain a +1 on strength and on    constitution but a -2 on";
+1417 print" charisma.":print"are you sure you wish to be this race?"
+1418 get d$:if d$="" then 1418
+1419 if d$="n" then gosub9999:goto 910
+1420 if d$<>"y" then 1418
+1421 mus=mus+1:hlt=hlt+1:chs=chs-2:if chs<3 then chs=3:mdfrd=1
+1425 goto 1460
+1429 print"<m>ale or <f>emale?"
+1430 get gen$:if gen$="" then 1430
+1440 print:print"humans gain no bonuses or penalties on   ability scores."
+1445 print:print"are you sure you wish to be this race?"
+1450 get d$:if d$="" then 1450
+1453 if d$="n" then gosub9999:goto910
+1455 if d$<>"y" then goto 1450
+1460 printchr$(147);"****************class menu**************"
+1461 if race=1 then fight=1:thf=1:ain=1:mlt=1
+1462 if race=2 then fight=1:mag=1:thf=1:ain=1:mlt=1:bow=1
+1464 if race=3 then cle=1:drd=1:fight=1:ran=1:mag=1:thf=1:ain=1:mlt=1
+1466 if race=4 then fight=1:thf=1:mlt=1
+1478 if race=5 then fight=1:ill=1:thf=1:ain=1:mlt=1
+1480 if race=6 then cle=1:fight=1:thf=1:ain=1:mlt=1
+1482 ifrace=7thenfight=1:cle=1:thf=1:mag=1:ain=1:mlt=1:drd=1:ill=1:pal=1:bow=1
+1483 if race=7 then m=1
+1485 if fight=1 thenprint"<f>ighter"
+1490 if pal=1 then print"<p>aladin"
+1500 if bow=1 then print"<r>anger"
+1505 if thf=1 then print"<t>hief"
+1510 if cle=1 then print"<c>leric"
+1525 if ill=1 then print"<i>llutionist"
+1527 if mag=1 then print"<m>agic user"
+1530 if ain=1then print"<a>ssassin"
+1535 if drd=1 then print"<d>ruid"
+1536 if m=1 then print"m<o>nk"
+1538 if mlt=1 then print"or a m<u>lti-classed character."
+1539 print"please pick your class or 'z' to see     your ability scores"
+1540 get class$:if class$="" then 1540
+1542 if class$="z" then gosub9790:goto1460
+1545 if class$="o" then 1600
+1546 if class$="d" then 1608
+1550 if class$="a" then 1605
+1555 if class$="m" then 1611
+1560 if class$="i" then 1620
+1570 if class$="c" then 1625
+1575 if class$="t" then 1630
+1580 if class$="r" then 1635
+1585 if class$="p" then 1640
+1590 if class$="f" then 1645
+1595 if class$="u" then 1650
+1600 ifmus<15orwis<15ordex<15orhlt<11thenprint"you cannot become this class!"
+1601 ifmus<15orwis<15ordex<15orhlt<11thengosub9999:goto 1485
+1603 goto 1720
+1605 if mus<12ormnd<11or dex<12thenprint:print"you cannot become this class!"
+1606 if mus<12ormnd<11or dex<12thengosub 9999:goto 1485
+1607 goto 1720
+1608 ifwis<12orchs<15 then print"you cannot become this class!"
+1609 ifwis<12orchs<15 then gosub9999:goto1485
+1610 goto 1720
+1611 if mnd<9ordex<6 then print:print"you cannot become this class!"
+1615 if mnd<9ordex<6 then print:print"you cannot become this class!"
+1616 if mnd<9ordex<6 then gosub9999:goto 1485
+1618 goto 1720
+1620 if mnd<15ordex<16 then print:print"you cannot become this class!"
+1621 if mnd<15ordex<16 then gosub 9999:goto 1485
+1623 goto 1720
+1625 if wis<9then print"you cannot become this class!"
+1626 if wis<9then gosub9999:goto1485
+1628 goto 1720
+1630 if dex<9then print"you cannot become this class!"
+1631 if dex<9then gosub 9999:goto 1485
+1634 goto 1720
+1635 ifmus<13ormnd<13orwis<14orhlt<14 thenprint"you cannot become this class!"
+1636 ifmus<13ormnd<13orwis<14orhlt<14 thengosub9999:goto 1485
+1638 mxe=238:goto 1720
+1640 ifmus<12ormnd<9orwis<13orhlt<9orchs<17thenprint"you cannot be this class!"
+1641 ifmus<12ormnd<9orwis<13orhlt<9orchs<17 thengosub9999:goto 1485
+1643 mxe=238:goto 1720
+1645 ifmus< 9or hlt<7 then print:print"you cannot become this class!"
+1646 ifmus< 9or hlt<7 then gosub 9999:goto 1485
+1648 mxe=238:goto 1720
+1650 print"what two classes would you like to be?"
+1655 get fs$:if fs$="" then 1655
+1660 print:print"your second class?"
+1665 get fq$:if fq$="" then 1665
+1670 if fq$="f" or fs$="f" then gosub11645
+1675 if fq$="p" or fs$="p"  then gosub11640
+1680 if fq$="r" or fs$="r"  then gosub11635
+1685 if fq$="t"  or fs$="t" then gosub11630
+1690 if fq$="c"or fs$="c" then gosub11625
+1700 if fq$="i"or fs$="i"then gosub11620
+1705 if fq$="m"or fs$="m"then gosub11610
+1710 if fq$="a" or fs$="a"thengosub11605
+1711 if gg<2 then goto 1485
+1720 printchr$(147);"***************alignment menu***********"
+1725 if class$="d"or fs$="d"or fq$="d"  or fq$="d" then tn=1:goto1790
+1727 if class$="p"   or fs$="p" or fq$="p"then lg=1:goto1790
+1728 if class$="r"thencg=1:lg=1:ng=1:goto1790
+1730 if class$="t"or fs$="t"orfq$="t"thence=1:cn=1:le=1:ln=1:ne=1:ng=1:goto 1790
+1733 if class$="a"orfs$="a"or fq$="a" then ca=1:le=1:ne=1:goto 1790
+1735 print"1. chaotic evil"
+1740 print"2. chaotic good"
+1745 print"3. chaotic neutral"
+1750 print"4. lawful evil"
+1755 print"5. lawful good"
+1760 print"6. lawful neutral"
+1765 print"7. neutral evil"
+1770 print"8. neutral good"
+1775 print"9. true neutral"
+1780 get al:if al<1 or al>9 then goto1780
+1785 goto  1830
+1790 if ce=1 then  print"1. chaotic evil"
+1795 if cg=1 then  print"2. chaotic good"
+1800 if cn=1 then  print"3. chaotic neutral"
+1805 if le=1 then  print"4. lawful evil"
+1807 if lg=1 then  print"5. lawful good"
+1810 if ln=1 then  print"6. lawful neutral"
+1812 if ne=1 then  print"7. neutral evil"
+1820 if ng=1 then  print"8. neutral good"
+1825 if tn=1 then print"9. true neutral"
+1827 get al:if al=0 then 1827
+1830 printchr$(147):print:print"what is your character's name";
+1840 input name$
+1850 printchr$(147);"************character summary***********"
+1855 print"name- ";name$
+1857 print"gender-";
+1858 if gen$="m" then print"male"
+1859 if gen$="f" then print"female"
+1860 print"class- ";:if class$="o" then print"monk";:goto 1960
+1865 if class$="p" then print"paladin";:goto 1960
+1867 if class$="m"then print"magic-user";:goto 1960
+1870 if class$="f" then print"fighter";:goto 1960
+1873 if class$="r" then print"ranger";:goto 1960
+1875 if class$="t" then print"thief";:goto 1960
+1877 if class$="i" then print"illutionist";:goto 1960
+1880 if class$="c" then print"cleric";:goto 1960
+1890 if class$="d" then print"druid";:goto 1960
+1893 if class$="a" then print"assassin";:goto 1960
+1895 if fs$="f" and fq$="t" then print"fighter/thief";:sumo=1:goto 1960
+1896 if fs$="t" and fq$="f" then print"fighter/thief";:sumo=1:goto 1960
+1900 if fs$="c" and fq$="f" then print"cleric/fighter";:sumo=2:goto 1960
+1901 if fs$="f" and fq$="c" then print"cleric/fighter";:sumo=2:goto 1960
+1905 if fs$="c" and fq$="r" then print"cleric/ranger";:sumo=3:goto 1960
+1906 if fs$="r" and fq$="c" then print"cleric/ranger";:sumo=3:goto 1960
+1910 if fs$="c" and fq$="m" then print"cleric/magic user";:sumo=4:goto 1960
+1911 if fs$="m" and fq$="c" then print"cleric/magic user";:sumo=4:goto 1960
+1920 if fs$="c" and fq$="t" then print"cleric/thief";:sumo=6:goto 1960
+1921 if fs$="t" and fq$="c" then print"cleric/thief";:sumo=6:goto 1960
+1925 if fs$="c" and fq$="a" then print"cleric/assassin";:sumo=6:goto 1960
+1926 if fs$="a" and fq$="c" then print"cleric/assassin";:sumo=6:goto 1960
+1930 if fs$="f" and fq$="m" then print"fighter/magic-user";:sumo=7:goto 1960
+1931 if fs$="m" and fq$="f" then print"fighter/magic-user";:sumo=7:goto 1960
+1935 if fs$="f" and fq$="i" then print"fighter/illutionist";:sumo=6:goto 1960
+1936 if fs$="i" and fq$="f" then print"fighter/illutionist";:sumo=6:goto 1960
+1940 if fs$="f" and fq$="a"then print"fighter/assassin";:sumo=1:goto 1960
+1941 if fs$="i" and fq$="f"then print"fighter/assassin";:sumo=1:goto 1960
+1945 if fs$="m" and fq$="t" then print"magic-user/thief";:sumo=7:goto 1960
+1946 if fs$="t" and fq$="m" then print"magic-user/thief";:sumo=7:goto 1960
+1950 if fs$="t"and fq$="i" then print"illutionist/thief";:sumo=7:goto 1960
+1951 if fs$="i"and fq$="t" then print"illutionist/thief";:sumo=7:goto 1960
+1954 print:print"there is no such class!!"
+1956 fori=1 to1150:next i:goto 900
+1960 if ecar$="he" then race=3
+1961 print"     race-";
+1962 if race=1 then print"dwarf"
+1963 if race=2 then print"elf"
+1964 if race=3 then print"half-elf"
+1965 if race=4 then print"halfling"
+1966 if race=5 then print"gnome"
+1967 if race=6 then print"half orc"
+1968 if race=7 then print"human"
+1973 print"alignment- ";
+1974 if al=5 then print"lawful good":gg=1
+1975 if al=1 then print"chaotic evil":ee=1
+1976 if al=2 then print"chaotic good":gg=1
+1977 if al=3   then print"chaotic neutral":gg=1
+1978 if al=4 then print"lawful evil":ee=1
+1983 if al=6 then print"lawful neutral":gg=1
+1985 if al=7 then print"neurtral evil":ee=1
+1987 if al=8 then print"neutral good":gg=1
+1990 if al=9 then print"true neutral":gg=1
+2000 print"level- 1     hit points- ";
+2010 if class$="f" then hp=10
+2013 if class$="p" then hp=10
+2015 if class$="r" then hp=16
+2017 if class$="c" thenhp=8
+2020 if class$="d" then hp=8
+2023 if class$="m" then hp=4
+2025 if class$="i" then hp=4
+2027 if class$="t" then hp=6
+2030 if class$="a" then hp=6
+2033 if class$="o" then hp=8
+2035 if sumo=1 thenhp=8
+2040 if sumo=2 then hp=9
+2045 if sumo=3 then hp=12
+2050 if sumo=4 then hp=6
+2053 if sumo=6 then hp=7
+2055 if sumo=7 then hp=5
+2060 if hlt=3 then hp=hp-3:if hp<1 then 2010
+2067 if hlt=4 then hp=hp-1:if hp<1 then goto          2010
+2070 if hlt=5 thenhp=hp-1:ifhp<1then2010
+2073 if hlt=6thenhp=hp-1:ifhp<1then2010
+2075 if hlt=15 then hp=hp+1
+2078 if hlt=16 then hp=hp+2
+2085 if hlt=17andclass$="p"or class$="r" or class$="f"thenhp=hp+3:goto 2100
+2087 if hlt=17 then hp=hp+2
+2095 if hlt=18andclass$="p"orclass$="f"orclass$="r"thenhp=hp+4:goto2100
+2097 if hlt=18 then hp=hp+2
+2100 printhp
+2103 if shd=1 then print"current number of hit points-"
+2105 print"armour class-";:ac=10
+2127 if dex=3 then ac=ac+4
+2140 if dex=4 then ac=ac+3
+2145 if dex=5 then ac=ac+2
+2150 if dex=6 then ac=ac+1
+2153 if dex=15 then ac=ac-1
+2155 if dex=16 then ac=ac-2
+2160 if dex=17 then ac=ac-3
+2163 if dex=18 or dex=19then ac=ac-4
+2165 printac;"     exp points-"
+2170 print:print"str    int    wis   dex   con  chs"
+2175 print"";mus;"   ";mnd;"    ";wis;"  ";dex;"  ";hlt;" ";chs
+2176 if fs$="f" or fq$="f" or fs$="r" or fq$="r" then 2190
+2179 if class$="f" or class$="p" or class$="r" then 2190
+2185 goto 2195
+2190 if exm=0 then 2195
+2193 if mus>17 then print"/";exm
+2195 print:print"mental luck-";
+2200 ml=(int(mnd+wis+chs)/3):ml=int(ml):printml
+2203 print"physical luck-";
+2205 pl=(mus+dex+hlt)/3:pl=int(pl):print pl
+2220 if shd=1 then goto 2255
+2235 print:print"        <press space bar>"
+2245 get d$:if d$="" then 2245
+2255 if class$="t" or class$="o" then goto  2270
+2260 if fs$="t" or fq$="t" or fs$="o" or fq$="o" then goto 2270
+2265 goto 2440
+2270 tt=1:print:print"thieving abilities----------------------"
+2275 pp=30:ol=25:rt=20:ms=15:his=10:hn=10:cw=85:rl=0
+2285 ifrace=1 then ol=ol+10 and rt=rt+15andcw=75:rl=-5
+2295 if race=2 then pp=35:ol=ol-5:ms=20:his=20:hn=15
+2300 if race=3 then pp=pp+10:his=15
+2310 ifrace=4thenpp=35:ol=30:rt=25:ms=25:his=25:hn=15:cw=70
+2320 ifrace=5 thenol=30:rt=10:ms=20:his=15:hn=20:cw=70
+2330 if race=6thenpp=pp-5:ol=30:rt=25:hn=15:cw=90
+2340 if dex=9 thenpp=pp-15:ol=ol-10:ol=ol-10:ms=ms-20:rt=rt-10:his=his-10
+2345 if dex=10 thenpp=pp-10:ol=ol-5:rt=rt-10:ms=ms-15:his=his-5
+2350 if dex=11 thenpp=pp-5:rt=rt-5:ms=ms-10
+2360 if dex=12 then ms=ms-5
+2365 if dex=16 then ol=ol+5
+2370 if dex=17 then pp=pp+5:ol=ol+10:ms=ms+5:his=his+5
+2380 if dex=18or dex=19 then pp=pp+10:ol=ol+15:rt=rt+5:ms=ms+10:his=his+10
+2390 print"pick pockets-";pp;"%"
+2395 print"open locks-";ol;"%"
+2400 print"find/remove traps-";rt;"%"
+2410 print"move silently-";ms;"%"
+2420 print"hide in shadow-";his;"%"
+2425 print"hear noise-";hn;"%"
+2430 print"climb walls-";cw;"%"
+2440 if class$="m" or fs$="m" orfq$="m" then 2460
+2445 if class$="i" or fs$="i" or fq$="i"then 2460
+2447 if class$="c" or fs$="c" or fq$="c" or class$="d" then 2460
+2450 goto 2475
+2460 mm=1:print:print"spells per day"
+2461 print"{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}{CBM-T}"
+2470 print"    1st level           4th level"
+2471 print"    2nd level           5th level"
+2472 print"    3rd level           6th level"
+2473 print"                        7th level"
+2475 if tt+mm=2 then goto  2490
+2480 goto 2495
+2490 if shd=1 then 2495
+2492 print"<<<<<<<<<<<<press space bar>>>>>>>>>>>>>"
+2493 get d$:if d$="" then 2493
+2495 print:print"equipment------"
+2500 print:print"magic items-----------------------------"
+2510 print:print:print:print
+2515 if shd=1 then print:print:print:print:print
+2520 print"normal items----------------------------"
+2521 print"  clothes"
+2522 print"  bedroll"
+2523 print"  cloak"
+2525 if mm=1 then print"  spell book"
+2530 if tt=1 then print"  thieving tools"
+2540 if class$="c" or fs$="c" or fq$="c" or class$="d" then 2550
+2545 goto 2555
+2550 if gg=1 then print"  holy symbol"
+2553 if ee=1 then print"  unholy symbol"
+2555 if shd=1 then print:print:print:print:print:print:print:goto 2575
+2557 print"WWWWWWWWWWWWWpress space barWWWWWWWWWWWW"
+2565 get d$:if d$="" then 2565
+2575 print:print"money--"
+2585 print"copper pieces-"
+2590 print"silver pieces-"
+2595 print"electrum pieces-"
+2600 print"platinum pieces-"
+2610 print"gold pieces- 150"
+2620 print"gems------"
+2621 print:print"bonuses and penalties-------------------"
+2622 ifmus=3 then print"-3 on 'to hit' rolls.  "
+2623 ifmus=3 then  print"-1 on damage rolls"
+2624 if mus=4 or mus=5 then print"-2 on 'to hit rolls.  ";
+2625 if mus=4 or mus=5 then print"-1 on damge rolls."
+2626 if mus=6 or mus=7 then print"-1 on 'to hit' rolls."
+2627 if mus=16 then print"+1 on damage rolls."
+2628 if mus=17 then print"+1 on 'to hit' and damage rolls."
+2640 if mus=18 and mxe=0 then print"+1 on 'to hit'"
+2645 if mus=18 and mxe=0 then print"and +2 on damage rolls.":goto 2947
+2655 if exm<50 andexm>0   then print"+1 on 'to hit' rolls."
+2665 if exm<50 andexm>0   then print"+3 damages rolls."
+2675 if exm<75 and exm>51 then    print"+2 on 'to hit' rolls."
+2680 if exm<75 and exm>51 then    print"and +3 on damage rolls."
+2690 if exm>750and exm<91 then print"+2 on 'to hit' rolls"
+2700 if exm>750and exm<91 then print"+4 on damage rolls."
+2710 if exm>90 and exm<100 then print"+2 on 'to hit' rolls."
+2720 if exm>90 and exm<100 then print"+5 on damage rolls"
+2730 if exm=100 then print"and +6 on damage rolls."
+2830 if shd=1 then close 4,4:goto 2837
+2835 goto 2947
+2837 print"here's your character."
+2840 print"do you wish to <m>ake another,"
+2850 print"or <q>uit?"
+2860 get kdc$:if kdc$="" then 2860
+2865 if kdc$="m" then 10
+2870 if kdc$="q" then 2880
+2875 goto 2860
+2880 do you wish to reset the computerprint"
+2885 get cdk$:if cdk$="" then 2885
+2890 if cdk$="y" then sys64738
+2900 if cdk$="n" then end
+2947 print:print:print:print"do you wish to keep this character?"
+2948 get d$:if d$="" then  2948
+2949 if d$="n" then 10
+2950 print"do you wish to print it out?"
+2953 get z$:if z$="" then 2953
+2955 if z$="y" then goto 2957
+2956 goto 2960
+2957 print"turn printer on.":goto 2970
+2960 print"do you wish to copy it down?"
+2962 get a$:if a$="" then 2962
+2963 if a$="y" then 1850
+2964 if a$="n" then print"what the hell do you want to do!?!!":goto 2947
+2970 for e=1 to 1350:next e
+2980 shd=1:open 4,4:cmd 4:goto 1850
+3045 if d$="n" then 10
+3046 if shd=1 then end
+6880 print"1. ";a1
+6890 print"2. ";a2
+6900 print"3. ";a3
+6910 print"4. ";a4
+6920 print"5. ";a5
+6930 print"6. ";a6
+6940 return
+6999 rem****number placement subroutine****************************************
+7000 if a1=18 then y=56
+7010 if a1=17 then y=55
+7020 if a1=16 then y=54
+7030 if a1=15 then  y=53
+7050 if a1=13 then  y=51
+7055 if a1=14 then  y=52
+7060 if a1=12 then y=50
+7070 if a1=11 then y=49
+7080 if a1=10 then y=48
+7090 if a1=9 then y=57
+7100 if a1=8 then y=56
+7110 if a1=7 then y=55
+7120 if a1=6 then y=54
+7130 if a1=5 then y=53
+7140 if a1=4 then y=52
+7150 if a1=3 then y=51
+7160 if a1=2 then y=50
+7170 if a1=1 then y=49
+7180 if a2=18 then y2=56
+7190 if a2=17 then y2=55
+7200 if a2=16 then y2=54
+7210 if a2=15 then  y2=53
+7220 if a2=14 then  y2=52
+7230 if a2=13 then  y2=51
+7240 if a2=12 then y2=50
+7250 if a2=11 then y2=49
+7260 if a2=10 then y2=48
+7270 if a2=9 then y2=57
+7280 if a2=8 then y2=56
+7290 if a2=7 then y2=55
+7300 if a2=6 then y2=54
+7310 if a2=5 then y2=53
+7320 if a2=4 then y2=52
+7330 if a2=3 then y2=51
+7340 if a2=2 then y2=50
+7350 if a2=1 then y2=49
+7360 if a3=18 then y3=56
+7370 if a3=17 then y3=55
+7380 if a3=16 then y3=54
+7390 if a3=15 then  y3=53
+7400 if a3=14 then  y3=52
+7410 if a3=13 then  y3=51
+7420 if a3=12 then y3=50
+7430 if a3=11 then y3=49
+7440 if a3=10 then y3=48
+7450 if a3=9 then y3=57
+7460 if a3=8 then y3=56
+7470 if a3=7 then y3=55
+7480 if a3=6 then y3=54
+7490 if a3=5 then y3=53
+7500 if a3=4 then y3=52
+7510 if a3=3 then y3=51
+7520 if a3=2 then y3=50
+7530 if a3=1 then y3=49
+7540 if a4=18 then y4=56
+7550 if a4=17 then y4=55
+7560 if a4=16 then y4=54
+7570 if a4=15 then  y4=53
+7580 if a4=14 then  y4=52
+7590 if a4=13 then  y4=51
+7600 if a4=12 then y4=50
+7610 if a4=11 then y4=49
+7620 if a4=10 then y4=48
+7630 if a4=9 then y4=57
+7640 if a4=8 then y4=56
+7650 if a4=7 then y4=55
+7660 if a4=6 then y4=54
+7670 if a4=5 then y4=53
+7680 if a4=4 then y4=52
+7690 if a4=3 then y4=51
+7700 if a4=2 then y4=50
+7710 if a4=1 then y4=49
+7720 if a5=18 then y5=56
+7730 if a5=17 then y5=55
+7740 if a5=16 then y5=54
+7750 if a5=15 then  y5=53
+7760 if a5=14 then  y5=52
+7770 if a5=13 then  y5=51
+7780 if a5=12 then y5=50
+7790 if a5=11 then y5=49
+7800 if a5=10 then y5=48
+7810 if a5=9 then y5=57
+7820 if a5=8 then y5=56
+7830 if a5=7 then y5=55
+7840 if a5=6 then y5=54
+7850 if a5=5 then y5=53
+7860 if a5=4 then y5=52
+7870 if a5=3 then y5=51
+7880 if a5=2 then y5=50
+7890 if a5=1 then y5=49
+7900 if a6=18 then y6=56
+8000 if a6=17 then y6=55
+8010 if a6=16 then y6=54
+8020 if a6=15 then  y6=53
+8030 if a6=14 then  y6=52
+8040 if a6=13 then  y6=51
+8050 if a6=12 then y6=50
+8070 if a6=11 then y6=49
+8080 if a6=10 then y6=48
+8090 if a6=9 then y6=57
+8100 if a6=8 then y6=56
+8110 if a6=7 then y6=55
+8120 if a6=6 then y6=54
+8130 if a6=5 then y6=53
+8140 if a6=4 then y6=52
+8150 if a6=3 then y6=51
+8160 if a6=2 then y6=50
+8170 if a6=1 then y6=49
+8820 if a5=8 then y5=56
+8830 if a5=7 then y5=55
+8840 if a5=6 then y5=54
+8850 if a5=5 then y5=53
+8860 if a5=4 then y5=52
+8870 if a5=3 then y5=51
+9000 return
+9790 printchr$(147):print:print"strength-";mus
+9800 print:print"intelligence-";mnd
+9805 print:print"wisdom-";wis
+9810 print:print"dexterity-";dex
+9815 print:print"constitution-";hlt
+9820 print:print"charisma-";chs
+9845 print:print"<<press a key to continue>>"
+9850 get d$:if d$="" then 9850
+9851 return
+9999 print"***************************************":print:gg=0:return
+11605 if mus<12ormnd<11or dex<12thenprint:print"you cannot become this class!"
+11606 if mus<12ormnd<11or dex<12thengosub 9999:return
+11607 gg=gg+1:return
+11610 if mnd<9ordex<6 then print:print"you cannot become this class!"
+11615 if mnd<9ordex<6 then print:print"you cannot become this class!"
+11616 if mnd<9ordex<6 then gosub9999:return
+11617 gg=gg+1:return
+11620 if mnd<15ordex<16 then print:print"you cannot become this class!"
+11621 if mnd<15ordex<16 then gosub 9999:return
+11622 gg=gg+1:return
+11625 if wis<9then print"you cannot become this class!"
+11626 if wis<9then gosub9999:return
+11627 gg=gg+1:return
+11630 if dex<9then print"you cannot become this class!"
+11631 if dex<9then gosub 9999:return
+11632 gg=gg+1:return
+11635 ifmus<13ormnd<13 or wis<14orhlt<14thenprint"you cannot become this class!
+11636 ifmus<13ormnd<13 or wis<14orhlt<14thengosub9999:return
+11637 mxe=238:gg=gg+1
+11640 ifmus<12ormnd<9orwis<13orhlt<9orchs<17thenprint"you cannot be this class!"
+11641 ifmus<12ormnd<9orwis<13orhlt<9orchs<17 thengosub9999:return
+11642 gg=gg+1
+11645 ifmus< 9or hlt<7 then print:print"you cannot become this class!"
+11646 ifmus< 9or hlt<7 then gosub 9999:return
+11647 gg=gg+1:mxw=238:return
+12000 rem  that's all folks!!!!!!!
