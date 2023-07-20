@@ -206,7 +206,7 @@
 1330 if mus<6 or mus>d thenprint:print"you cannot be this race!":gosub9999:goto910
 1340 if mnd<7 then print:print"you cannot be this race!":gosub9999:goto910
 1345 if hlt<8 then print:print"you cannot be this race!":gosub9999:goto 910
-1350 print:print"gnomes gain no bonuses or peanlties on    ability scores."
+1350 print:print"gnomes gain no bonuses or penalties on    ability scores."
 1355 print:print"are you sure you wish to be this race?"
 1360 get d$:if d$="" then 1360
 1365 if d$="n" then gosub9999:goto 910
